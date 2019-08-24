@@ -1,5 +1,10 @@
 package userInterface;
 
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -15,7 +20,6 @@ public class Main extends Application {
 		launch();
 
 	}
-	
 	public void start(Stage stage) throws IOException {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("battleBoard.fxml"));
