@@ -56,7 +56,7 @@ public class BoardController {
     	int columns1=0;
     	int columns2=0;
     	GridPane gridPane = new GridPane();
-
+    	
     	gridPane.getChildren().clear();
     	
     	try {
@@ -69,8 +69,10 @@ public class BoardController {
     	}
     	GridPane gridPaneOne = new GridPane();
     	gridPaneOne.setPadding(new Insets(20));
+    	scrollPaneOneA.setContent(gridPaneOne);
     	GridPane gridPaneTwo = new GridPane();
     	gridPaneTwo.setPadding(new Insets(20));
+    	scrollPaneOneB.setContent(gridPaneTwo);
 	    	for (int i = 0; i < columns1; i++) {
 				for (int j = 0; j < rows1; j++) {
 					gridPaneOne.add(new Button(" F "), i, j);
@@ -83,8 +85,7 @@ public class BoardController {
 					gridPaneTwo.add(new Button(" F "), i, j);
 				}
 			}
-    	 gridPane.add(gridPaneOne, 0, 0);
-    	 gridPane.add(gridPaneTwo, 1, 0);
+    	
 
 		}
 
