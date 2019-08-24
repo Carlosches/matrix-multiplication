@@ -16,7 +16,7 @@
                <children>
                   <Button layoutX="506.0" layoutY="294.0" mnemonicParsing="false" onAction="#tabOneMultiplyButton" text="MULTIPLY" />
                   <ScrollPane fx:id="scrollPaneOneA" layoutX="14.0" layoutY="41.0" prefHeight="229.0" prefWidth="288.0" />
-                  <Label fx:id="tabOneLabel" layoutX="50.0" layoutY="329.0" prefHeight="29.0" prefWidth="254.0" text="Label" />
+                  <Label fx:id="tabOneLabel" layoutX="50.0" layoutY="329.0" prefHeight="29.0" prefWidth="254.0" />
                   <Button layoutX="423.0" layoutY="294.0" mnemonicParsing="false" onAction="#tabOneGenerateButton" text="GENERATE" />
                   <TextField fx:id="rowMatrixTwo" layoutX="249.0" layoutY="294.0" prefHeight="25.0" prefWidth="51.0" promptText="Rows" />
                   <TextField fx:id="rowMatrixOne" layoutX="50.0" layoutY="294.0" prefHeight="25.0" prefWidth="51.0" promptText="Rows" />
