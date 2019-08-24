@@ -29,7 +29,10 @@ public class BoardController {
     private TextField columnMatrixTwo;
 
     @FXML
-    private ScrollPane scrollPaneOne;
+    private ScrollPane scrollPaneOneA;
+    
+    @FXML
+    private ScrollPane scrollPaneOneB;
     
     @FXML
     private ScrollPane scrollPaneTwo;
@@ -53,7 +56,7 @@ public class BoardController {
     	int columns1=0;
     	int columns2=0;
     	GridPane gridPane = new GridPane();
-    	scrollPaneOne.setContent(gridPane);
+
     	gridPane.getChildren().clear();
     	
     	try {
@@ -73,6 +76,7 @@ public class BoardController {
 					gridPaneOne.add(new Button(" F "), i, j);
 				}
 			}
+
 	    	
 	    	for (int i = 0; i < columns2; i++) {
 				for (int j = 0; j < rows2; j++) {
@@ -82,7 +86,9 @@ public class BoardController {
     	 gridPane.add(gridPaneOne, 0, 0);
     	 gridPane.add(gridPaneTwo, 1, 0);
 
-    }
+		}
+
+    
 
     @FXML
     void tabOneMultiplyButton(ActionEvent event) {
