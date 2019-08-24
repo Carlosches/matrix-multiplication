@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Matrix {
 	
-<<<<<<< HEAD
-=======
 	public static final String LAST_BATTLE_MATRIX = "battle";
 	public static final String COEFFICIENTS_MATRIX = "coefficients";
 	public static final String CURRENT_BATTLE_MATRIX = "current";
@@ -65,7 +63,7 @@ public class Matrix {
 	public boolean isRepeatedNumbers() {
 		return repeatedNumbers;
 	}
->>>>>>> ca1e4f1efd11ca6f5b55a1eeb8370e675fd9b3d6
+
 	
 	
 }

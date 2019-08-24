@@ -28,7 +28,10 @@ public class BoardController {
     private TextField columnMatrixTwo;
 
     @FXML
-    private ScrollPane scrollPaneOne;
+    private ScrollPane scrollPaneOneA;
+    
+    @FXML
+    private ScrollPane scrollPaneOneB;
     
     @FXML
     private ScrollPane scrollPaneTwo;
@@ -52,7 +55,7 @@ public class BoardController {
     	int columns = Integer.parseInt(columnMatrixOne.getText());
     	
     	GridPane gridPane = new GridPane();
-    	scrollPaneOne.setContent(gridPane);
+    	scrollPaneOneA.setContent(gridPane);
     	
     	gridPane.getChildren().clear();
     	
@@ -60,6 +63,21 @@ public class BoardController {
     	for (int i = 0; i < columns; i++) {
 			for (int j = 0; j < rows; j++) {
 				gridPane.add(new Button(" F "), i, j);
+			}
+		}
+    	
+    	int rowsB = Integer.parseInt(rowMatrixTwo.getText());
+    	int columnsB = Integer.parseInt(columnMatrixTwo.getText());
+    	
+    	GridPane gridPane2 = new GridPane();
+    	scrollPaneOneB.setContent(gridPane2);
+    	
+    	gridPane2.getChildren().clear();
+    	
+    	 
+    	for (int i = 0; i < columnsB; i++) {
+			for (int j = 0; j < rowsB; j++) {
+				gridPane2.add(new Button(" F "), i, j);
 			}
 		}
 
