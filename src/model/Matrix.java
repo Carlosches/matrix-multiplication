@@ -1,44 +1,68 @@
+//______________________________________________________PACKAGE___________________________________________________________
+
+/**
+ *This package contains all the classes required to multiply matrices and finding prime numbers. 
+ */
+
 package model;
+
+//______________________________________________________IMPORTS___________________________________________________________
 
 import java.util.List;
 
-public class Matrix {
-<<<<<<< HEAD
+//______________________________________________________THE CLASS__________________________________________________________
 
-=======
-	
->>>>>>> 07aa03258bcd9cb3d8c4e76e0190cd7de35bef02
+/**
+* This class defines the necessary attributes and methods to build the matrices. 
+* @author 
+*/
+
+public class Matrix {
+
+//______________________________________________________CONSTANTS___________________________________________________________	
+
 	public static final String LAST_BATTLE_MATRIX = "battle";
 	public static final String COEFFICIENTS_MATRIX = "coefficients";
 	public static final String CURRENT_BATTLE_MATRIX = "current";
 	
+//______________________________________________________ATTRIBUTES___________________________________________________________
+
 	private String type;
 	private int[][] matrix;
 	private int rows;
 	private int columns;
 	private boolean repeatedNumbers;
 	
+//______________________________________________________METHODS___________________________________________________________
+
 	public Matrix(String type, int rows, int columns) {
 		this.type = type;
 		this.rows = rows;
 		this.columns = columns;
 	}
 	
+//________________________________________________________________________________________________________________
+
 	public void fillMatrix() {
 		
 	}
-	
+
+//________________________________________________________________________________________________________________
+
 	public List<String> findShips(){
 		return null;
 	}
 
-	
+//________________________________________________________________________________________________________________
+
 	/**
 	 * @return the type
 	 */
 	public String getType() {
 		return type;
 	}
+
+//________________________________________________________________________________________________________________
 
 	/**
 	 * @return the matrix
@@ -47,12 +71,16 @@ public class Matrix {
 		return matrix;
 	}
 
+//________________________________________________________________________________________________________________
+
 	/**
 	 * @return the rows
 	 */
 	public int getRows() {
 		return rows;
 	}
+
+//________________________________________________________________________________________________________________
 
 	/**
 	 * @return the columns
@@ -61,6 +89,8 @@ public class Matrix {
 		return columns;
 	}
 
+//________________________________________________________________________________________________________________
+
 	/**
 	 * @return the repeatedNumbers
 	 */
@@ -68,7 +98,7 @@ public class Matrix {
 		return repeatedNumbers;
 	}
 
-	
+//________________________________________________________________________________________________________________	
 	
 }
 

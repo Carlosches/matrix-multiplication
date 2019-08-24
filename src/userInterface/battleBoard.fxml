@@ -12,16 +12,16 @@
   <tabs>
     <Tab fx:id="tabOne" text="INTRODUCE THE MATRICES">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Button layoutX="506.0" layoutY="294.0" mnemonicParsing="false" onAction="#tabOneMultiplyButton" text="MULTIPLY" />
                   <ScrollPane fx:id="scrollPaneOneA" layoutX="14.0" layoutY="41.0" prefHeight="229.0" prefWidth="288.0" />
                   <Label fx:id="tabOneLabel" layoutX="50.0" layoutY="329.0" prefHeight="29.0" prefWidth="254.0" />
                   <Button layoutX="423.0" layoutY="294.0" mnemonicParsing="false" onAction="#tabOneGenerateButton" text="GENERATE" />
-                  <TextField fx:id="rowMatrixTwo" layoutX="249.0" layoutY="294.0" prefHeight="25.0" prefWidth="51.0" promptText="Rows" />
+                  <TextField fx:id="rowMatrixTwo" layoutX="244.0" layoutY="294.0" prefHeight="25.0" prefWidth="51.0" promptText="Rows" />
                   <TextField fx:id="rowMatrixOne" layoutX="50.0" layoutY="294.0" prefHeight="25.0" prefWidth="51.0" promptText="Rows" />
                   <TextField fx:id="columnMatrixOne" layoutX="118.0" layoutY="294.0" prefHeight="25.0" prefWidth="66.0" promptText="Columns" />
-                  <TextField fx:id="columnMatrixTwo" layoutX="314.0" layoutY="294.0" prefHeight="25.0" prefWidth="51.0" promptText="Columns" />
+                  <TextField fx:id="columnMatrixTwo" layoutX="314.0" layoutY="294.0" prefHeight="25.0" prefWidth="62.0" promptText="Columns" />
                   <ScrollPane fx:id="scrollPaneOneB" layoutX="327.0" layoutY="41.0" prefHeight="229.0" prefWidth="288.0" />
                </children></AnchorPane>
       </content>

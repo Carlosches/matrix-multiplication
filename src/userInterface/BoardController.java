@@ -1,8 +1,14 @@
+//______________________________________________________PACKAGE___________________________________________________________
+
+/**
+ *This package contains all the classes required to show the user interface and matrices in it. 
+ */
+
 package userInterface;
 
-import java.awt.font.NumericShaper;
-import java.io.IOException;
+//______________________________________________________IMPORTS___________________________________________________________
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,12 +20,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class BoardController {
+//______________________________________________________THE CLASS__________________________________________________________
 
+/**
+* This class defines the necessary attributes and methods to show and control the battle board in the user interface. 
+* @author 
+*/
+
+public class BoardController {
+	
+//______________________________________________________CONSTANTS___________________________________________________________	
+
+//______________________________________________________ATTRIBUTES___________________________________________________________
+		
     @FXML
     private Tab tabOne;
 
@@ -56,6 +72,8 @@ public class BoardController {
     @FXML
     private Label tabTwoLabel;
     
+//______________________________________________________METHODS___________________________________________________________
+
     @FXML
     void tabOneGenerateButton(ActionEvent event) {
 
@@ -76,7 +94,7 @@ public class BoardController {
 	    	 
     	}catch(NumberFormatException e){
     		
-    		tabOneLabel.setText("PLEASE, INTRODUCE ONLY INTEGER VALUES");
+    		tabOneLabel.setText("PLEASE, INTRODUCE ONLY POSITIVE INTEGER VALUES");
     		
     	}
     	
@@ -103,6 +121,7 @@ public class BoardController {
 
 		}
 
+//________________________________________________________________________________________________________________
 
     @FXML
     void tabOneMultiplyButton(ActionEvent event) {
@@ -130,30 +149,68 @@ public class BoardController {
     	
     }
 
+//________________________________________________________________________________________________________________
+
     @FXML
     void tabTwoGenerateButton(ActionEvent event) {
-    	int num = Integer.parseInt(tabTwoTextField.getText());
-    	GridPane gridPane = new GridPane();
-    	scrollPaneTwo.setContent(gridPane);
-    	gridPane.getChildren().clear();
     	
-    	for (int k = 0; k < num; k++) {
-    		GridPane gridPane2 = new GridPane();
-    		gridPane2.getChildren().clear();
-    		gridPane2.setPadding(new Insets(20));
-    		for (int i = 0; i < 5; i++) {
-    			for (int j = 0; j < 5; j++) {
-    				gridPane2.add(new Button(" F "), i, j);
-    			}
-    		}
+    	try {
+    		
+    		tabTwoLabel.setText("Here you can generate as many random matrices as you want");
+    		
+	    	int num = Integer.parseInt(tabTwoTextField.getText());
+	    	GridPane gridPane = new GridPane();
+	    	scrollPaneTwo.setContent(gridPane);
+	    	gridPane.getChildren().clear();
+	    	
+	    	for (int k = 0; k < num; k++) {
+	    		GridPane gridPane2 = new GridPane();
+	    		gridPane2.getChildren().clear();
+	    		gridPane2.setPadding(new Insets(20));
+	    		for (int i = 0; i < 5; i++) {
+	    			for (int j = 0; j < 5; j++) {
+	    				gridPane2.add(new Button(" F "), i, j);
+	    			}
+	    		}
+	    	
+	    		gridPane.add(gridPane2, k,0);
+			}
     	
-    		gridPane.add(gridPane2, k,0);
-		}
+    	}catch(NumberFormatException e) {
+    		
+    		tabTwoLabel.setText("PLEASE, INTRODUCE ONLY POSITIVE INTEGER VALUES");
+    		
+    	}
     }
 
+//________________________________________________________________________________________________________________
+ 
     @FXML
     void tabTwoMultiplyButton(ActionEvent event) {
-
+    	
+    	try {
+			
+			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("outcome.fxml"));
+			Parent root1= (Parent)fxmlLoader.load();
+			
+			Stage stage= new Stage();
+			
+			stage.setTitle("OUTCOME MATRIX");
+			
+			stage.setScene(new Scene(root1));
+			
+			stage.show();
+			
+		} catch (IOException e) {
+			
+			System.out.println("ERROR");
+			e.printStackTrace();
+			
+		}
+    	
     }
+    
+//________________________________________________________________________________________________________________
+ 
 
 }
