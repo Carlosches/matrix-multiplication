@@ -3,7 +3,11 @@ package model;
 import java.util.List;
 
 public class Matrix {
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 07aa03258bcd9cb3d8c4e76e0190cd7de35bef02
 	public static final String LAST_BATTLE_MATRIX = "battle";
 	public static final String COEFFICIENTS_MATRIX = "coefficients";
 	public static final String CURRENT_BATTLE_MATRIX = "current";
