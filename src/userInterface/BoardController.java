@@ -59,47 +59,6 @@ public class BoardController {
     @FXML
     void tabOneGenerateButton(ActionEvent event) {
 
-    	
-    	try {
-    		
-    		tabOneLabel.setText("");
-    	
-    		int rows = Integer.parseInt(rowMatrixOne.getText());
-    		int columns = Integer.parseInt(columnMatrixOne.getText());
-    		
-    		GridPane gridPane = new GridPane();
-        	scrollPaneOneA.setContent(gridPane);
-        	
-        	gridPane.getChildren().clear();
-        	
-        	 
-        	for (int i = 0; i < columns; i++) {
-    			for (int j = 0; j < rows; j++) {
-    				gridPane.add(new Button(" F "), i, j);
-    			}
-    		}
-        	
-        	int rowsB = Integer.parseInt(rowMatrixTwo.getText());
-        	int columnsB = Integer.parseInt(columnMatrixTwo.getText());
-        	
-        	GridPane gridPane2 = new GridPane();
-        	scrollPaneOneB.setContent(gridPane2);
-        	
-        	gridPane2.getChildren().clear();
-        	
-        	 
-        	for (int i = 0; i < columnsB; i++) {
-    			for (int j = 0; j < rowsB; j++) {
-    				gridPane2.add(new Button(" F "), i, j);
-    			}
-    		}
-    	
-    	}catch(NumberFormatException e) {
-    		
-    		tabOneLabel.setText("PLEASE, INTRODUCE ONLY INTEGERS");
-    		
-    	}
-
     	int rows1=0;
     	int rows2=0;
     	int columns1=0;
@@ -109,19 +68,25 @@ public class BoardController {
     	gridPane.getChildren().clear();
     	
     	try {
+    		
 	    	 rows1 = Integer.parseInt(rowMatrixOne.getText());
 	    	 columns1 = Integer.parseInt(columnMatrixOne.getText());
 	    	 rows2 = Integer.parseInt(rowMatrixTwo.getText());
 	    	 columns2 = Integer.parseInt(columnMatrixTwo.getText());
+	    	 
     	}catch(NumberFormatException e){
-    		System.out.println(88);
+    		
+    		tabOneLabel.setText("PLEASE, INTRODUCE ONLY INTEGER VALUES");
+    		
     	}
+    	
     	GridPane gridPaneOne = new GridPane();
     	gridPaneOne.setPadding(new Insets(20));
     	scrollPaneOneA.setContent(gridPaneOne);
     	GridPane gridPaneTwo = new GridPane();
     	gridPaneTwo.setPadding(new Insets(20));
     	scrollPaneOneB.setContent(gridPaneTwo);
+    	
 	    	for (int i = 0; i < columns1; i++) {
 				for (int j = 0; j < rows1; j++) {
 					gridPaneOne.add(new Button(" F "), i, j);
