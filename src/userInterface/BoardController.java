@@ -1,11 +1,14 @@
 package userInterface;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 public class BoardController {
 
@@ -13,22 +16,22 @@ public class BoardController {
     private Tab tabOne;
 
     @FXML
-    private Spinner<?> rowMatrixOne;
+    private TextField rowMatrixTwo;
 
     @FXML
-    private Spinner<?> columnMatrixOne;
+    private TextField rowMatrixOne;
 
     @FXML
-    private Spinner<?> rowMatrixTwo;
+    private TextField columnMatrixOne;
 
     @FXML
-    private Spinner<?> columnMatrixTwo;
+    private TextField columnMatrixTwo;
 
     @FXML
-    private Button tabOneMultiplyButton;
-
+    private ScrollPane scrollPaneOne;
+    
     @FXML
-    private AnchorPane anchorPaneOne;
+    private ScrollPane scrollPaneTwo;
 
     @FXML
     private Label tabOneLabel;
@@ -37,18 +40,44 @@ public class BoardController {
     private Tab tabTwo;
 
     @FXML
-    private AnchorPane anchorPaneTwo;
-
-    @FXML
-    private Spinner<?> numberRandomMatricesSpinner;
-
-    @FXML
-    private Button tabTwoGenerateButton;
-
-    @FXML
-    private Button tabTwoMultiplyButton;
+    private TextField tabTwoTextField;
 
     @FXML
     private Label tabTwoLabel;
+    
+    @FXML
+    void tabOneGenerateButton(ActionEvent event) {
+    	
+    	int rows = Integer.parseInt(rowMatrixOne.getText());
+    	int columns = Integer.parseInt(columnMatrixOne.getText());
+    	
+    	GridPane gridPane = new GridPane();
+    	scrollPaneOne.setContent(gridPane);
+    	
+    	gridPane.getChildren().clear();
+    	
+    	 
+    	for (int i = 0; i < columns; i++) {
+			for (int j = 0; j < rows; j++) {
+				gridPane.add(new Button(" F "), i, j);
+			}
+		}
+
+    }
+
+    @FXML
+    void tabOneMultiplyButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void tabTwoGenerateButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void tabTwoMultiplyButton(ActionEvent event) {
+
+    }
 
 }
