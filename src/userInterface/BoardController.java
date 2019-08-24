@@ -5,13 +5,10 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-<<<<<<< HEAD
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-=======
 import javafx.geometry.Insets;
->>>>>>> 288f20681103a37a719be38707c079866ef05f26
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -61,7 +58,7 @@ public class BoardController {
     
     @FXML
     void tabOneGenerateButton(ActionEvent event) {
-<<<<<<< HEAD
+
     	
     	try {
     		
@@ -102,7 +99,7 @@ public class BoardController {
     		tabOneLabel.setText("PLEASE, INTRODUCE ONLY INTEGERS");
     		
     	}
-=======
+
     	int rows1=0;
     	int rows2=0;
     	int columns1=0;
@@ -140,9 +137,7 @@ public class BoardController {
     	
 
 		}
->>>>>>> 288f20681103a37a719be38707c079866ef05f26
 
-    
 
     @FXML
     void tabOneMultiplyButton(ActionEvent event) {
