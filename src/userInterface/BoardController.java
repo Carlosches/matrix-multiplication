@@ -2,6 +2,7 @@ package userInterface;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -47,21 +48,39 @@ public class BoardController {
     
     @FXML
     void tabOneGenerateButton(ActionEvent event) {
-    	
-    	int rows = Integer.parseInt(rowMatrixOne.getText());
-    	int columns = Integer.parseInt(columnMatrixOne.getText());
-    	
+    	int rows1=0;
+    	int rows2=0;
+    	int columns1=0;
+    	int columns2=0;
     	GridPane gridPane = new GridPane();
     	scrollPaneOne.setContent(gridPane);
-    	
     	gridPane.getChildren().clear();
     	
-    	 
-    	for (int i = 0; i < columns; i++) {
-			for (int j = 0; j < rows; j++) {
-				gridPane.add(new Button(" F "), i, j);
+    	try {
+	    	 rows1 = Integer.parseInt(rowMatrixOne.getText());
+	    	 columns1 = Integer.parseInt(columnMatrixOne.getText());
+	    	 rows2 = Integer.parseInt(rowMatrixTwo.getText());
+	    	 columns2 = Integer.parseInt(columnMatrixTwo.getText());
+    	}catch(NumberFormatException e){
+    		System.out.println(88);
+    	}
+    	GridPane gridPaneOne = new GridPane();
+    	gridPaneOne.setPadding(new Insets(20));
+    	GridPane gridPaneTwo = new GridPane();
+    	gridPaneTwo.setPadding(new Insets(20));
+	    	for (int i = 0; i < columns1; i++) {
+				for (int j = 0; j < rows1; j++) {
+					gridPaneOne.add(new Button(" F "), i, j);
+				}
 			}
-		}
+	    	
+	    	for (int i = 0; i < columns2; i++) {
+				for (int j = 0; j < rows2; j++) {
+					gridPaneTwo.add(new Button(" F "), i, j);
+				}
+			}
+    	 gridPane.add(gridPaneOne, 0, 0);
+    	 gridPane.add(gridPaneTwo, 1, 0);
 
     }
 
@@ -72,7 +91,23 @@ public class BoardController {
 
     @FXML
     void tabTwoGenerateButton(ActionEvent event) {
-
+    	int num = Integer.parseInt(tabTwoTextField.getText());
+    	GridPane gridPane = new GridPane();
+    	scrollPaneTwo.setContent(gridPane);
+    	gridPane.getChildren().clear();
+    	
+    	for (int k = 0; k < num; k++) {
+    		GridPane gridPane2 = new GridPane();
+    		gridPane2.getChildren().clear();
+    		gridPane2.setPadding(new Insets(20));
+    		for (int i = 0; i < 5; i++) {
+    			for (int j = 0; j < 5; j++) {
+    				gridPane2.add(new Button(" F "), i, j);
+    			}
+    		}
+    	
+    		gridPane.add(gridPane2, k,0);
+		}
     }
 
     @FXML
