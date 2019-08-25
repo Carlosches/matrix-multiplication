@@ -83,10 +83,18 @@ public class Board {
 	 */
 	
 	public int[][] multiplyMatricesSecondOption(){
+		int row = -1;
+		int col = -1;
+		for (int i = 0; i < matrices.size(); i++) {
+			int[][] temp = matrices.get(i).getMatrix();
+			if(temp.length > row)
+				row = temp.length;
+			if(temp[0].length > col)
+				col = temp[0].length;
+		}
 		int[][] A = matrices.get(0).getMatrix();
-		int n = A.length;
-		if(A.length != A[0].length || (A.length == A[0].length && (A.length > 0 && (A.length & (A.length - 1)) != 0))){
-			n = Math.max(nextPowerOf2(A.length), nextPowerOf2(A[0].length));
+		int n = Math.max(nextPowerOf2(row), nextPowerOf2(col));
+		if(A.length != n){
 			int[][] aux = new int[n][n];
 			for (int i = 0; i < A.length; i++) {
 				for (int j = 0; j < A[i].length; j++) {
@@ -110,10 +118,6 @@ public class Board {
 		}
 		return A;
 	}
-<<<<<<< HEAD
-	
-=======
-
 	private int nextPowerOf2(int n)
 	{
 		int count = 0;
@@ -139,7 +143,6 @@ public class Board {
 	 * <b>Pre: </b>
 	 * <b>Post: </b>
 	 */
->>>>>>> d07870e5345a18360055111e58910d133ed8f5b1
 	private int[][] multiplyMatricesSecondOptionAux(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
 		if (n == 1) {
@@ -232,10 +235,18 @@ public class Board {
 	 */
 
 	public int[][] multiplyMatricesThirdOption(){
+		int row = -1;
+		int col = -1;
+		for (int i = 0; i < matrices.size(); i++) {
+			int[][] temp = matrices.get(i).getMatrix();
+			if(temp.length > row)
+				row = temp.length;
+			if(temp[0].length > col)
+				col = temp[0].length;
+		}
 		int[][] A = matrices.get(0).getMatrix();
-		int n = A.length;
-		if(A.length != A[0].length || (A.length == A[0].length && (A.length > 0 && (A.length & (A.length - 1)) != 0))){
-			n = Math.max(nextPowerOf2(A.length), nextPowerOf2(A[0].length));
+		int n = Math.max(nextPowerOf2(row), nextPowerOf2(col));
+		if(A.length != n){
 			int[][] aux = new int[n][n];
 			for (int i = 0; i < A.length; i++) {
 				for (int j = 0; j < A[i].length; j++) {
