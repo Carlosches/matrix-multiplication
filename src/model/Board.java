@@ -109,7 +109,7 @@ public class Board {
 				int[][] aux = new int[n][n];
 				for (int k = 0; k < B.length; k++) {
 					for (int j = 0; j < B[k].length; j++) {
-						aux[k][j] = A[k][j];
+						aux[k][j] = B[k][j];
 					}
 				}
 				B = aux;
@@ -236,17 +236,14 @@ public class Board {
 
 	public int[][] multiplyMatricesThirdOption(){
 		int row = -1;
-		int col = -1;
 		for (int i = 0; i < matrices.size(); i++) {
 			int[][] temp = matrices.get(i).getMatrix();
 			if(temp.length > row)
 				row = temp.length;
-			if(temp[0].length > col)
-				col = temp[0].length;
 		}
 		int[][] A = matrices.get(0).getMatrix();
-		int n = Math.max(nextPowerOf2(row), nextPowerOf2(col));
-		if(A.length != n || A[0].length != n){
+		int n = nextPowerOf2(row);
+		if(A.length != n){
 			int[][] aux = new int[n][n];
 			for (int i = 0; i < A.length; i++) {
 				for (int j = 0; j < A[i].length; j++) {
@@ -257,11 +254,11 @@ public class Board {
 		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
-			if(B.length != n || B[0].length != n){
+			if(B.length != n){
 				int[][] aux = new int[n][n];
 				for (int k = 0; k < B.length; k++) {
 					for (int j = 0; j < B[k].length; j++) {
-						aux[k][j] = A[k][j];
+						aux[k][j] = B[k][j];
 					}
 				}
 				B = aux;
