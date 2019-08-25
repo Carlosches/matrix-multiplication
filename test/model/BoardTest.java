@@ -180,7 +180,46 @@ class BoardTest {
 	@Test
 	public void testMultiplyMatricesFirstOption_InterestingCase() {
 					
-					
+		stage1();
+		
+		Matrix matrixA = new Matrix(Matrix.COEFFICIENTS_MATRIX, 50, 50);
+		Matrix matrixB = new Matrix(Matrix.LAST_BATTLE_MATRIX, 50, 50);
+		
+		for (int i = 0; i < matrixB.getMatrix().length; i++) {
+			for (int j = 0; j < matrixB.getMatrix()[i].length; j++) {
+				if (i > j) {
+					matrixA.getMatrix()[i][j] = 0;
+					matrixB.getMatrix()[i][j] = 0;
+				}	
+			}
+		}
+		
+		
+		board.getMatrices().add(matrixA);
+		board.getMatrices().add(matrixB);
+		
+		int[][] C = board.multiplyMatricesFirstOption();
+		
+		for (int i = 0; i < C.length; i++) {
+			for (int j = 0; j < C[i].length; j++) {
+				System.out.print(C[i][j] + "\t");
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		
+		boolean correctMultiplication = true;
+		
+		for (int i = 1; i < C.length && correctMultiplication; i++) {
+			for (int j = 0; j < i && correctMultiplication; j++) {
+				if (C[i][j] != 0) {
+					correctMultiplication = false;
+				}
+			}
+		}
+		
+		assertTrue("The multiplication went wrong", correctMultiplication);			
 					
 	}
 	
@@ -192,31 +231,31 @@ class BoardTest {
 		
 		stage1();
 		
-		int[][] A = new int[4][4];
-		int[][] B = new int[4][4];
-		int[][] C = new int[4][4];
+		int[][] A = new int[6][5];
+		int[][] B = new int[5][4];
+		int[][] C = new int[6][4];
 		
 		A[0][0] = 5;
 		A[0][1] = 7;
 		A[0][2] = 12;
 		A[0][3] = 4;
-		//A[0][4] = 23;
+		A[0][4] = 23;
 		A[1][0] = 11;
 		A[1][1] = 17;
 		A[1][2] = 34;
 		A[1][3] = 45;
-		//A[1][4] = 2;
+		A[1][4] = 2;
 		A[2][0] = 1;
 		A[2][1] = 0;
 		A[2][2] = 20;
 		A[2][3] = 11;
-		//A[2][4] = 3;
+		A[2][4] = 3;
 		A[3][0] = 4;
 		A[3][1] = 34;
 		A[3][2] = 22;
 		A[3][3] = 13;
-		//A[3][4] = 17;
-		/*A[4][0] = 1;
+		A[3][4] = 17;
+		A[4][0] = 1;
 		A[4][1] = 5;
 		A[4][2] = 15;
 		A[4][3] = 23;
@@ -225,7 +264,7 @@ class BoardTest {
 		A[5][1] = 21;
 		A[5][2] = 19;
 		A[5][3] = 13;
-		A[5][4] = 12;*/
+		A[5][4] = 12;
 		
 		B[0][0] = 15;
 		B[0][1] = 73;
@@ -243,10 +282,10 @@ class BoardTest {
 		B[3][1] = 15;
 		B[3][2] = 9;
 		B[3][3] = 27;
-		/*B[4][0] = 41;
+		B[4][0] = 41;
 		B[4][1] = 6;
 		B[4][2] = 17;
-		B[4][3] = 25;*/
+		B[4][3] = 25;
 		
 		C[0][0] = 1245;
 		C[0][1] = 636;
@@ -264,14 +303,14 @@ class BoardTest {
 		C[3][1] = 871;
 		C[3][2] = 1068;
 		C[3][3] = 4904;
-		/*C[4][0] = 2245;
+		C[4][0] = 2245;
 		C[4][1] = 663;
 		C[4][2] = 823;
 		C[4][3] = 3273;
 		C[5][0] = 1248;
 		C[5][1] = 1036;
 		C[5][2] = 846;
-		C[5][3] = 3807;*/
+		C[5][3] = 3807;
 		
 		Matrix matrixA = new Matrix(Matrix.LAST_BATTLE_MATRIX, 6, 5);
 		Matrix matrixB = new Matrix(Matrix.COEFFICIENTS_MATRIX, 5, 4);
