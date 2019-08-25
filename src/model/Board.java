@@ -110,9 +110,7 @@ public class Board {
 		}
 		return A;
 	}
-<<<<<<< HEAD
-	
-=======
+
 
 	private int nextPowerOf2(int n)
 	{
@@ -139,7 +137,7 @@ public class Board {
 	 * <b>Pre: </b>
 	 * <b>Post: </b>
 	 */
->>>>>>> d07870e5345a18360055111e58910d133ed8f5b1
+
 	private int[][] multiplyMatricesSecondOptionAux(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
 		if (n == 1) {
