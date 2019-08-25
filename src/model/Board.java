@@ -105,7 +105,7 @@ public class Board {
 		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
-			if(B.length != n || B[0].length != 0){
+			if(B.length != n || B[0].length != n){
 				int[][] aux = new int[n][n];
 				for (int k = 0; k < B.length; k++) {
 					for (int j = 0; j < B[k].length; j++) {
@@ -246,7 +246,7 @@ public class Board {
 		}
 		int[][] A = matrices.get(0).getMatrix();
 		int n = Math.max(nextPowerOf2(row), nextPowerOf2(col));
-		if(A.length != n || A[0].length != 0){
+		if(A.length != n || A[0].length != n){
 			int[][] aux = new int[n][n];
 			for (int i = 0; i < A.length; i++) {
 				for (int j = 0; j < A[i].length; j++) {
@@ -257,7 +257,7 @@ public class Board {
 		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
-			if(B.length != n || B[0].length != 0){
+			if(B.length != n || B[0].length != n){
 				int[][] aux = new int[n][n];
 				for (int k = 0; k < B.length; k++) {
 					for (int j = 0; j < B[k].length; j++) {
