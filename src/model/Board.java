@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 //______________________________________________________IMPORTS___________________________________________________________
 
+import java.util.Arrays;
 import java.util.List;
 
 //______________________________________________________THE CLASS__________________________________________________________
@@ -74,11 +75,50 @@ public class Board {
 
 	public int[][] multiplyMatricesSecondOption(){
 		int[][] A = matrices.get(0).getMatrix();
+		int n = A.length;
+		if(A.length != A[0].length || (A.length == A[0].length && (A.length > 0 && (A.length & (A.length - 1)) != 0))){
+			n = Math.max(nextPowerOf2(A.length), nextPowerOf2(A[0].length));
+			int[][] aux = new int[n][n];
+			for (int i = 0; i < A.length; i++) {
+				for (int j = 0; j < A[i].length; j++) {
+					aux[i][j] = A[i][j];
+				}
+			}
+			A = aux;
+		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
+			if(B.length != n){
+				int[][] aux = new int[n][n];
+				for (int k = 0; k < B.length; k++) {
+					for (int j = 0; j < B[i].length; j++) {
+						aux[k][j] = A[k][j];
+					}
+				}
+				B = aux;
+			}
 			A = multiplyMatricesSecondOptionAux(A, B, A.length);
 		}
 		return A;
+	}
+
+	private int nextPowerOf2(int n)
+	{
+		int count = 0;
+
+		// First n in the below
+		// condition is for the
+		// case where n is 0
+		if (n > 0 && (n & (n - 1)) == 0)
+			return n;
+
+		while(n != 0)
+		{
+			n >>= 1;
+			count += 1;
+		}
+
+		return 1 << count;
 	}
 
 	/**
@@ -86,7 +126,6 @@ public class Board {
 	 * <b>Pre: </b>
 	 * <b>Post: </b>
 	 */
-	
 	private int[][] multiplyMatricesSecondOptionAux(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
 		if (n == 1) {
@@ -173,9 +212,29 @@ public class Board {
 
 	public int[][] multiplyMatricesThirdOption(){
 		int[][] A = matrices.get(0).getMatrix();
+		int n = A.length;
+		if(A.length != A[0].length || (A.length == A[0].length && (A.length > 0 && (A.length & (A.length - 1)) != 0))){
+			n = Math.max(nextPowerOf2(A.length), nextPowerOf2(A[0].length));
+			int[][] aux = new int[n][n];
+			for (int i = 0; i < A.length; i++) {
+				for (int j = 0; j < A[i].length; j++) {
+					aux[i][j] = A[i][j];
+				}
+			}
+			A = aux;
+		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
-			int[][] C = new int[B.length][B.length];
+			if(B.length != n){
+				int[][] aux = new int[n][n];
+				for (int k = 0; k < B.length; k++) {
+					for (int j = 0; j < B[i].length; j++) {
+						aux[k][j] = A[k][j];
+					}
+				}
+				B = aux;
+			}
+			int[][] C = new int[n][n];
 			multiplyMatricesThirdOptionAux(A, B, C, A.length);
 			A = C;
 		}
