@@ -74,6 +74,13 @@ public class Board {
 	
 //________________________________________________________________________________________________________________
 
+	/**
+	 * <b>Description:</b>
+	 * This method multiply matrices by using the divide and conquer algorithm.<br><br>
+	 * <b>Pre: </b>
+	 * <b>Post: </b>
+	 */
+	
 	public int[][] multiplyMatricesSecondOption(){
 		int[][] A = matrices.get(0).getMatrix();
 		for (int i = 1; i < matrices.size(); i++) {
@@ -82,13 +89,6 @@ public class Board {
 		}
 		return A;
 	}
-
-	/**
-	 * <b>Description:</b>
-	 * This method multiply matrices by using the divide and conquer algorithm.<br><br>
-	 * <b>Pre: </b>
-	 * <b>Post: </b>
-	 */
 	
 	private int[][] multiplyMatricesSecondOptionAux(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
@@ -174,6 +174,13 @@ public class Board {
 
 //________________________________________________________________________________________________________________
 
+	/**
+	 * <b>Description:</b>
+	 * This method multiply matrices by using the Strassen algorithm.<br><br>
+	 * <b>Pre: </b>
+	 * <b>Post: </b>
+	 */
+
 	public int[][] multiplyMatricesThirdOption(){
 		int[][] A = matrices.get(0).getMatrix();
 		for (int i = 1; i < matrices.size(); i++) {
@@ -185,12 +192,6 @@ public class Board {
 		return A;
 	}
 
-	/**
-	 * <b>Description:</b>
-	 * This method multiply matrices by using the Strassen algorithm.<br><br>
-	 * <b>Pre: </b>
-	 * <b>Post: </b>
-	 */
 
 	private void multiplyMatricesThirdOptionAux(int[][] A, int[][] B, int[][] C, int n) {
 		if (n == 2) {
