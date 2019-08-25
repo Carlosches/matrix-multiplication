@@ -116,7 +116,13 @@ public class Board {
 			}
 			A = multiplyMatricesSecondOptionAux(A, B, n);
 		}
-		return A;
+		int[][] ans = new int[row][row];
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < row; j++) {
+				ans[i][j] = A[i][j];
+			}
+		}
+		return ans;
 	}
 
 	private int nextPowerOf2(int n)
@@ -267,7 +273,13 @@ public class Board {
 			multiplyMatricesThirdOptionAux(A, B, C, n);
 			A = C;
 		}
-		return A;
+		int[][] ans = new int[row][row];
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < row; j++) {
+				ans[i][j] = A[i][j];
+			}
+		}
+		return ans;
 	}
 
 
