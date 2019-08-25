@@ -20,8 +20,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.*;
 
 //______________________________________________________THE CLASS__________________________________________________________
 
@@ -72,11 +74,25 @@ public class BoardController {
     @FXML
     private Label tabTwoLabel;
     
+    private Board board;
+    
 //______________________________________________________METHODS___________________________________________________________
-
+    @FXML
+    private void initialize() {
+    	board = new Board();
+    }
+    /**
+     * <b>Description:</b>
+     * This method allows to generate and show two matrices with specific values of the rows and columns.
+     * The matrices will only be generated if you can multiply each other
+     * 
+     * @param event, the click on the button
+     * <b>post:</b>  the list of the matrices of the object board has been modified
+     */
+    
     @FXML
     void tabOneGenerateButton(ActionEvent event) {
-
+    	tabOneLabel.setText("");
     	int rows1=0;
     	int rows2=0;
     	int columns1=0;
@@ -97,29 +113,41 @@ public class BoardController {
     		tabOneLabel.setText("PLEASE, INTRODUCE ONLY POSITIVE INTEGER VALUES");
     		
     	}
-    	
-    	GridPane gridPaneOne = new GridPane();
-    	gridPaneOne.setPadding(new Insets(20));
-    	scrollPaneOneA.setContent(gridPaneOne);
-    	GridPane gridPaneTwo = new GridPane();
-    	gridPaneTwo.setPadding(new Insets(20));
-    	scrollPaneOneB.setContent(gridPaneTwo);
-    	
-	    	for (int i = 0; i < columns1; i++) {
-				for (int j = 0; j < rows1; j++) {
-					gridPaneOne.add(new Button(" F "), i, j);
-				}
-			}
-
+    	if(columns1==rows2) {
+    		board.getMatrices().clear();
+    		Matrix firstMatrix = new Matrix(Matrix.LAST_BATTLE_MATRIX, rows1, columns1);
+    		Matrix secondMatrix = new Matrix(Matrix.COEFFICIENTS_MATRIX, rows2, columns2);
+    		board.getMatrices().add(firstMatrix);
+    		board.getMatrices().add(secondMatrix);
+    		
+	    	GridPane gridPaneOne = new GridPane();
+	    	gridPaneOne.setPadding(new Insets(20));
+	    	scrollPaneOneA.setContent(gridPaneOne);
+	    	GridPane gridPaneTwo = new GridPane();
+	    	gridPaneTwo.setPadding(new Insets(20));
+	    	scrollPaneOneB.setContent(gridPaneTwo);
 	    	
-	    	for (int i = 0; i < columns2; i++) {
-				for (int j = 0; j < rows2; j++) {
-					gridPaneTwo.add(new Button(" F "), i, j);
+		    	for (int i = 0; i < rows1; i++) {
+					for (int j = 0; j < columns1; j++) {
+						Button button = new Button(""+firstMatrix.getMatrix()[i][j]);
+						button.setPadding(new Insets(20));
+						gridPaneOne.add(button, j, i);
+					}
 				}
-			}
-    	
-
-		}
+	
+		    	
+		    	for (int i = 0; i < rows2; i++) {
+					for (int j = 0; j < columns2; j++) {
+						Button button = new Button(""+secondMatrix.getMatrix()[i][j]);
+						button.setPadding(new Insets(20));
+						gridPaneTwo.add(button, j,i );
+					}
+				}
+	    	
+    	}else {
+    		tabOneLabel.setText("the quantity of the columns of the first matrix must be equal "+"\n"+"the quantity of the rows of the second matrix");
+    	}
+	}
 
 //________________________________________________________________________________________________________________
 
@@ -150,7 +178,14 @@ public class BoardController {
     }
 
 //________________________________________________________________________________________________________________
-
+    /**
+     * <b>Description:</b>
+     * This method allows to show a list of matrices with random values of the rows and columns.
+     * 
+     * @param event, the click on the button
+     * <b>post:</b>  the list of the matrices of the object board has been modified
+     */
+    
     @FXML
     void tabTwoGenerateButton(ActionEvent event) {
     	
@@ -163,18 +198,21 @@ public class BoardController {
 	    	scrollPaneTwo.setContent(gridPane);
 	    	gridPane.getChildren().clear();
 	    	
-	    	for (int k = 0; k < num; k++) {
+	    	board.generateMatrices(num);
+	    	
+	    	for (int k = 0; k < board.getMatrices().size(); k++) {
+				int[][] currentMatrix = board.getMatrices().get(k).getMatrix();
 	    		GridPane gridPane2 = new GridPane();
-	    		gridPane2.getChildren().clear();
 	    		gridPane2.setPadding(new Insets(20));
-	    		for (int i = 0; i < 5; i++) {
-	    			for (int j = 0; j < 5; j++) {
-	    				gridPane2.add(new Button(" F "), i, j);
+	    		
+	    		for (int i = 0; i < currentMatrix.length; i++) {
+	    			for (int j = 0; j < currentMatrix[i].length; j++) {
+	    				gridPane2.add(new Button(""+currentMatrix[i][j]), j,i);
 	    			}
 	    		}
 	    	
 	    		gridPane.add(gridPane2, k,0);
-			}
+	    	}
     	
     	}catch(NumberFormatException e) {
     		

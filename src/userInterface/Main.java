@@ -57,9 +57,9 @@ public class Main extends Application {
 	    final double initHeight = scene.getHeight();
 	    final double ratio      = initWidth / initHeight;
 
-	    SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, contentPane);
+	    /*SceneSizeChangeListener sizeListener = new SceneSizeChangeListener(scene, ratio, initHeight, initWidth, contentPane);
 	    scene.widthProperty().addListener(sizeListener);
-	    scene.heightProperty().addListener(sizeListener);
+	    scene.heightProperty().addListener(sizeListener);*/
 	  }
 
 //________________________________________________________________________________________________________________

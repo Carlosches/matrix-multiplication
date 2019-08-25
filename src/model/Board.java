@@ -6,6 +6,8 @@
 
 package model;
 
+import java.util.ArrayList;
+
 //______________________________________________________IMPORTS___________________________________________________________
 
 import java.util.List;
@@ -35,6 +37,7 @@ public class Board {
 	 */
 	
 	public Board() {
+		matrices = new ArrayList<>();
 		
 	}
 	
@@ -95,9 +98,50 @@ public class Board {
 		}		
 	}
 	
+	/**
+	 * <b>Description:</b>
+     * This function allows to generate a specific quantity of matrices with random values.
+     * Ensures that the generated matrices can be multiplied
+     * 
+	 * @param quantity number of matrices to be generated
+	 * <b>post:</b> the matrices' list has been modified
+	 */
+	public void generateMatrices(int quantity) {
+		matrices.clear();
+		int next = (int)(Math.random()*10)+1;
+		for (int i = 0; i < quantity; i++) {
+			if(i==0) {
+				int ro = (int)(Math.random()*10)+1;
+				Matrix mat = new Matrix(Matrix.OTHER,ro,next);
+				matrices.add(mat);
+			}else {
+				int column = (int)(Math.random()*10)+1;
+				Matrix mat = new Matrix(Matrix.OTHER,next,column);
+				next = column;
+				matrices.add(mat);
+			}
+		}
+		
+	}
+	
 	public int[] getPrimes() {
 		return primeNumbers;
 	}
+
+	/**
+	 * @return the matrices
+	 */
+	public List<Matrix> getMatrices() {
+		return matrices;
+	}
+
+	/**
+	 * @param matrices the matrices to set
+	 */
+	public void setMatrices(List<Matrix> matrices) {
+		this.matrices = matrices;
+	}
+	
 	
 //________________________________________________________________________________________________________________
 	

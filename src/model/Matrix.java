@@ -24,6 +24,7 @@ public class Matrix {
 	public static final String LAST_BATTLE_MATRIX = "battle";
 	public static final String COEFFICIENTS_MATRIX = "coefficients";
 	public static final String CURRENT_BATTLE_MATRIX = "current";
+	public static final String OTHER = "other";
 	
 //______________________________________________________ATTRIBUTES___________________________________________________________
 
@@ -39,11 +40,25 @@ public class Matrix {
 		this.type = type;
 		this.rows = rows;
 		this.columns = columns;
+		matrix = new int[rows][columns];
+		fillMatrix();
 	}
 	
 //________________________________________________________________________________________________________________
-
-	public void fillMatrix() {
+	/**
+	 * <b>Description:</b>
+	 * This method allows to fill the matrix with random values
+	 * <b>post:</b> the parameter matrix has been modified
+	 */
+	private void fillMatrix() {
+		
+		for (int i = 0; i < rows; i++) {
+			
+			for (int j = 0; j < columns; j++) {
+				int num = (int) (Math.random()*150)+1;
+				matrix[i][j] = num;
+			}
+		}
 		
 	}
 
