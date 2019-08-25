@@ -83,10 +83,18 @@ public class Board {
 	 */
 	
 	public int[][] multiplyMatricesSecondOption(){
+		int row = -1;
+		int col = -1;
+		for (int i = 0; i < matrices.size(); i++) {
+			int[][] temp = matrices.get(i).getMatrix();
+			if(temp.length > row)
+				row = temp.length;
+			if(temp[0].length > col)
+				col = temp[0].length;
+		}
 		int[][] A = matrices.get(0).getMatrix();
-		int n = A.length;
-		if(A.length != A[0].length || (A.length == A[0].length && (A.length > 0 && (A.length & (A.length - 1)) != 0))){
-			n = Math.max(nextPowerOf2(A.length), nextPowerOf2(A[0].length));
+		int n = Math.max(nextPowerOf2(row), nextPowerOf2(col));
+		if(A.length != n || A[0].length != n){
 			int[][] aux = new int[n][n];
 			for (int i = 0; i < A.length; i++) {
 				for (int j = 0; j < A[i].length; j++) {
@@ -97,28 +105,24 @@ public class Board {
 		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
-			if(B.length != n){
+			if(B.length != n || B[0].length != 0){
 				int[][] aux = new int[n][n];
 				for (int k = 0; k < B.length; k++) {
-					for (int j = 0; j < B[i].length; j++) {
+					for (int j = 0; j < B[k].length; j++) {
 						aux[k][j] = A[k][j];
 					}
 				}
 				B = aux;
 			}
-			A = multiplyMatricesSecondOptionAux(A, B, A.length);
+			A = multiplyMatricesSecondOptionAux(A, B, n);
 		}
 		return A;
 	}
-
 
 	private int nextPowerOf2(int n)
 	{
 		int count = 0;
 
-		// First n in the below
-		// condition is for the
-		// case where n is 0
 		if (n > 0 && (n & (n - 1)) == 0)
 			return n;
 
@@ -230,10 +234,18 @@ public class Board {
 	 */
 
 	public int[][] multiplyMatricesThirdOption(){
+		int row = -1;
+		int col = -1;
+		for (int i = 0; i < matrices.size(); i++) {
+			int[][] temp = matrices.get(i).getMatrix();
+			if(temp.length > row)
+				row = temp.length;
+			if(temp[0].length > col)
+				col = temp[0].length;
+		}
 		int[][] A = matrices.get(0).getMatrix();
-		int n = A.length;
-		if(A.length != A[0].length || (A.length == A[0].length && (A.length > 0 && (A.length & (A.length - 1)) != 0))){
-			n = Math.max(nextPowerOf2(A.length), nextPowerOf2(A[0].length));
+		int n = Math.max(nextPowerOf2(row), nextPowerOf2(col));
+		if(A.length != n || A[0].length != 0){
 			int[][] aux = new int[n][n];
 			for (int i = 0; i < A.length; i++) {
 				for (int j = 0; j < A[i].length; j++) {
@@ -244,17 +256,17 @@ public class Board {
 		}
 		for (int i = 1; i < matrices.size(); i++) {
 			int[][] B = matrices.get(i).getMatrix();
-			if(B.length != n){
+			if(B.length != n || B[0].length != 0){
 				int[][] aux = new int[n][n];
 				for (int k = 0; k < B.length; k++) {
-					for (int j = 0; j < B[i].length; j++) {
+					for (int j = 0; j < B[k].length; j++) {
 						aux[k][j] = A[k][j];
 					}
 				}
 				B = aux;
 			}
 			int[][] C = new int[n][n];
-			multiplyMatricesThirdOptionAux(A, B, C, A.length);
+			multiplyMatricesThirdOptionAux(A, B, C, n);
 			A = C;
 		}
 		return A;
