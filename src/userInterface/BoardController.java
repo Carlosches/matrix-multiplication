@@ -77,10 +77,14 @@ public class BoardController {
     private Board board;
     
 //______________________________________________________METHODS___________________________________________________________
+    
     @FXML
     private void initialize() {
     	board = new Board();
     }
+    
+//________________________________________________________________________________________________________________
+
     /**
      * <b>Description:</b>
      * This method allows to generate and show two matrices with specific values of the rows and columns.
@@ -113,6 +117,7 @@ public class BoardController {
     		tabOneLabel.setText("PLEASE, INTRODUCE ONLY POSITIVE INTEGER VALUES");
     		
     	}
+    	
     	if(columns1==rows2) {
     		board.getMatrices().clear();
     		Matrix firstMatrix = new Matrix(Matrix.LAST_BATTLE_MATRIX, rows1, columns1);
