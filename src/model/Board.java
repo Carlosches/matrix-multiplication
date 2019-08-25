@@ -179,6 +179,7 @@ public class Board {
 
 		return C;
 
+		
 	}
 
 	private void constructMatrix(int[][] initialMatrix, int[][] newMatrix, int a, int b) {
