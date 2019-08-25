@@ -34,6 +34,7 @@ public class Board {
 //______________________________________________________METHODS___________________________________________________________
 	
 	/**
+	 * <b>Description:</b>
 	 * The constructor of the battle board.<br><br>
 	 */
 	
@@ -45,6 +46,7 @@ public class Board {
 //________________________________________________________________________________________________________________
 	
 	/**
+	 * <b>Description:</b>
 	 * This method multiply matrices by using the iterative algorithm.<br><br>
 	 * <b>Pre: </b>
 	 * <b>Post: </b>
@@ -122,6 +124,7 @@ public class Board {
 	}
 
 	/**
+	 * <b>Description:</b>
 	 * This method multiply matrices by using the divide and conquer algorithm.<br><br>
 	 * <b>Pre: </b>
 	 * <b>Post: </b>
@@ -242,6 +245,7 @@ public class Board {
 	}
 
 	/**
+	 * <b>Description:</b>
 	 * This method multiply matrices by using the Strassen algorithm.<br><br>
 	 * <b>Pre: </b>
 	 * <b>Post: </b>
@@ -304,6 +308,7 @@ public class Board {
 //________________________________________________________________________________________________________________
 	
 	/**
+	 * <b>Description:</b>
 	 * 
 	 */
 	
@@ -322,14 +327,17 @@ public class Board {
 		}		
 	}
 	
+//________________________________________________________________________________________________________________
+	
 	/**
 	 * <b>Description:</b>
      * This function allows to generate a specific quantity of matrices with random values.
-     * Ensures that the generated matrices can be multiplied
-     * 
+     * Ensures that the generated matrices can be multiplied.
+     * <b>pre:</b> The board must not be null
+     * <b>post:</b> the matrices' list has been modified
 	 * @param quantity number of matrices to be generated
-	 * <b>post:</b> the matrices' list has been modified
 	 */
+	
 	public void generateMatrices(int quantity) {
 		matrices.clear();
 		int next = (int)(Math.random()*10)+1;
@@ -348,18 +356,34 @@ public class Board {
 		
 	}
 	
+//________________________________________________________________________________________________________________
+	
+	/**
+	 * <b>Description:</b>
+	 * 
+	 * @return
+	 */
+	
 	public int[] getPrimes() {
 		return primeNumbers;
 	}
 
+//________________________________________________________________________________________________________________
+
 	/**
+	 * <b>Description:</b>
+	 * 
 	 * @return the matrices
 	 */
 	public List<Matrix> getMatrices() {
 		return matrices;
 	}
+	
+//________________________________________________________________________________________________________________
 
 	/**
+	 * <b>Description:</b>
+	 * 
 	 * @param matrices the matrices to set
 	 */
 	public void setMatrices(List<Matrix> matrices) {

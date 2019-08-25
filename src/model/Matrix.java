@@ -35,7 +35,14 @@ public class Matrix {
 	private boolean repeatedNumbers;
 	
 //______________________________________________________METHODS___________________________________________________________
-
+	
+	/**
+	 * <b>Description:</b>
+	 * 
+	 * @param type
+	 * @param rows
+	 * @param columns
+	 */
 	public Matrix(String type, int rows, int columns) {
 		this.type = type;
 		this.rows = rows;
