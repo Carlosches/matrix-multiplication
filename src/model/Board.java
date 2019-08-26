@@ -76,7 +76,7 @@ public class Board {
 
 	/**
 	 * <b>Description:</b>
-	 * This method multiply matrices by using the divide and conquer algorithm.<br><br>
+	 * This function multiplies matrices by using the divide and conquer algorithm.<br><br>
 	 * <b>Pre: </b> The ArrayList of matrices must not be empty.
 	 * <b>Pre: </b> The matrices of the ArrayList must be square matrices.
 	 * @return The matrix obtained of multiplying the matrices in the ArrayList of matrices.
@@ -125,6 +125,12 @@ public class Board {
 		return ans;
 	}
 
+	/**
+	 * <b>Description:</b>
+	 * This function takes a number and finds the closest number that is greater than the given number and is a power of two <br><br>
+	 * @param n the number that is to be queried.
+	 * @return The found power of two number.
+	 */
 	private int nextPowerOf2(int n)
 	{
 		int count = 0;
@@ -141,6 +147,14 @@ public class Board {
 		return 1 << count;
 	}
 
+	/**
+	 * <b>Description:</b>
+	 * This method multiplies two matrices by using the divide and conquer algorithm.<br><br>
+	 * @param A the matrix to be multiplied.
+	 * @param B the matrix to be multiplied.
+	 * @param n the size of the square matrices.
+	 * @return A matrix C which is the answer of the matrix multiplication between matrices A and B.
+	 */
 	private int[][] multiplyMatricesSecondOptionAux(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
 		if (n == 1) {
@@ -181,6 +195,16 @@ public class Board {
 		
 	}
 
+	/**
+	 * <b>Description:</b>
+	 * This function merges two matrices together. <br><br>
+	 * <b>Pre: </b> The matrices  must be square matrices.
+	 * @param initialMatrix The matrix that is to be merged.
+	 * @param newMatrix The matrix that is to be merged.
+	 * @param a The number of rows of the merged matrices.
+	 * @param b The number of columns of the merged matrices.
+	 * <b>post:</b>  The new matrix has the split operation done on it.
+	 */
 	private void constructMatrix(int[][] initialMatrix, int[][] newMatrix, int a, int b) {
 		int y = b;
 		for (int i = 0; i < initialMatrix.length; i++) {
@@ -192,7 +216,15 @@ public class Board {
 		}
 	}
 
-
+	/**
+	 * <b>Description:</b>
+	 * This function adds two matrices. <br><br>
+	 * <b>Pre: </b> The matrices  must be square matrices.
+	 * @param A The matrix that is to be subtracted.
+	 * @param B The matrix that is to be subtracted.
+	 * @param n The size of the square matrices.
+	 * @return The matrix obtained of adding the matrices.
+	 */
 	private int[][] addMatrix(int[][] A, int[][] B, int n){
 		int[][] C = new int[n][n];
 		for (int i = 0; i < n; i++) {
@@ -203,6 +235,16 @@ public class Board {
 		return C;
 	}
 
+	/**
+	 * <b>Description:</b>
+	 * This function splits the initial matrix into leaf matrices. <br><br>
+	 * <b>Pre: </b> The matrices  must be square matrices.
+	 * @param initialMatrix The matrix that is to be merged.
+	 * @param newMatrix The matrix that is to be merged.
+	 * @param a The number of rows of the initial matrix.
+	 * @param b The number of columns of the initial matrix.
+	 * <b>post:</b>  The new matrix has the merge operation done on it.
+	 */
 	private void deconstructMatrix(int[][] initialMatrix, int[][] newMatrix, int a, int b) {
 		int y = b;
 		for (int i = 0; i < newMatrix.length; i++) {
@@ -214,6 +256,15 @@ public class Board {
 		}
 	}
 
+	/**
+	 * <b>Description:</b>
+	 * This function subtracts two matrices. <br><br>
+	 * <b>Pre: </b> The matrices  must be square matrices.
+	 * @param A The matrix that is to be subtracted.
+	 * @param B The matrix that is to be subtracted.
+	 * @param n The size of the square matrices.
+	 * @return The matrix obtained of subtracting the matrices.
+	 */
 	private int[][] subtractMatrix(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
 		for (int i = 0; i < n; i++) {
@@ -228,7 +279,7 @@ public class Board {
 
 	/**
 	 * <b>Description:</b>
-	 * This method multiply matrices by using the Strassen algorithm.<br><br>
+	 * This method multiplies matrices by using Strassen's algorithm.<br><br>
 	 * <b>Pre: </b> The ArrayList of matrices must not be empty.
 	 * <b>Pre: </b> The matrices of the ArrayList must be square matrices.
 	 * @return The matrix obtained of multiplying the matrices in the ArrayList of matrices
@@ -276,7 +327,14 @@ public class Board {
 		return ans;
 	}
 
-
+	/**
+	 * <b>Description:</b>
+	 * This method multiplies two matrices by using Strassen's algorithm.<br><br>
+	 * @param A the matrix to be multiplied.
+	 * @param B the matrix to be multiplied.
+	 * @param n the size of the square matrices.
+	 * <b>post:</b>  Matrix C now has the answer to the matrix multiplication.
+	 */
 	private void multiplyMatricesThirdOptionAux(int[][] A, int[][] B, int[][] C, int n) {
 		if (n == 2) {
 			C[0][0] = (A[0][0] * B[0][0]) + (A[0][1] * B[1][0]);
@@ -335,11 +393,12 @@ public class Board {
 	
 	/**
 	 * <b>Description:</b>
-	 * 
+	 * This function uses the classic sieve of Eratosthenes to generate all prime numbers up to 1000000.
+	 * <b>post:</b>  The array of prime numbers has been initialized.
 	 */
 	
 	public void generatePrimes() {
-		
+
 		primeNumbers[0] = primeNumbers[1] = 1;
 		
 		for(int i = 2; i < 1000; i++){
