@@ -38,5 +38,15 @@
                </children></AnchorPane>
       </content>
     </Tab>
+      <Tab fx:id="tabThree" text="RESULT TAB">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane fx:id="scrollPaneThree" layoutY="5.0" prefHeight="300.0" prefWidth="653.0" />
+                  <Label layoutX="43.0" layoutY="322.0" prefHeight="31.0" prefWidth="312.0" text="Here is the matrix with the location of the martian troops" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
   </tabs>
 </TabPane>

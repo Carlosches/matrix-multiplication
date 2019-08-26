@@ -60,12 +60,18 @@ public class BoardController {
     
     @FXML
     private ScrollPane scrollPaneTwo;
+    
+    @FXML
+    private ScrollPane scrollPaneThree;
 
     @FXML
     private Label tabOneLabel;
 
     @FXML
     private Tab tabTwo;
+    
+    @FXML
+    private Tab tabThree;
 
     @FXML
     private TextField tabTwoTextField;
@@ -74,6 +80,8 @@ public class BoardController {
     private Label tabTwoLabel;
     
     private Board board;
+    
+    private int[][] matrix;
     
 //______________________________________________________METHODS___________________________________________________________
     
@@ -153,6 +161,8 @@ public class BoardController {
     	}
 	}
 
+//________________________________________________________________________________________________________________
+
 	public boolean validateSizes(int a, int b){
     	boolean success = false;
     	if(a == b)
@@ -165,6 +175,22 @@ public class BoardController {
     void tabOneMultiplyButton(ActionEvent event) {
     	
     	
+    	matrix = board.multiplyMatricesFirstOption();
+    	
+    	GridPane gridPane = new GridPane();
+    	gridPane.getChildren().clear();
+    	gridPane.setPadding(new Insets(20));
+    	scrollPaneThree.setContent(gridPane);
+    	
+    	for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				Button button = new Button(""+matrix[i][j]);
+				button.setPadding(new Insets(20));
+				gridPane.add(button, j,i );
+			}
+		}
+    	
+    	/*
 		try {
 			
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("outcome.fxml"));
@@ -183,7 +209,7 @@ public class BoardController {
 			System.out.println("ERROR");
 			e.printStackTrace();
 			
-		}
+		}*/
     	
     }
 
@@ -236,6 +262,22 @@ public class BoardController {
     @FXML
     void tabTwoMultiplyButton(ActionEvent event) {
     	
+    	matrix = board.multiplyMatricesFirstOption();
+    	
+    	GridPane gridPane = new GridPane();
+    	gridPane.getChildren().clear();
+    	gridPane.setPadding(new Insets(20));
+    	scrollPaneThree.setContent(gridPane);
+    	
+    	for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				Button button = new Button(""+matrix[i][j]);
+				button.setPadding(new Insets(20));
+				gridPane.add(button, j,i );
+			}
+		}
+    	
+    	/*
     	try {
 			
 			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("outcome.fxml"));
@@ -254,7 +296,7 @@ public class BoardController {
 			System.out.println("ERROR");
 			e.printStackTrace();
 			
-		}
+		}*/
     	
     }
     
