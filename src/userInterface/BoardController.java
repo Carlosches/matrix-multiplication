@@ -161,7 +161,17 @@ public class BoardController {
     	}
 	}
 
+
 //________________________________________________________________________________________________________________
+
+
+	/**
+	 * <b>Description:</b>
+	 * This function validates the sizes of two matrices to determine whether or not they can be mutliplied
+	 * @param a the number of columns in the first matrix.
+	 * @param b the number of rows in the second matrix.
+	 * @return True if they can be multiplied, false otherwise.
+	 */
 
 	public boolean validateSizes(int a, int b){
     	boolean success = false;
