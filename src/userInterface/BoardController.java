@@ -118,7 +118,7 @@ public class BoardController {
     		
     	}
     	
-    	if(columns1==rows2) {
+    	if(validateSizes(columns1, rows2)) {
     		board.getMatrices().clear();
     		Matrix firstMatrix = new Matrix(Matrix.LAST_BATTLE_MATRIX, rows1, columns1);
     		Matrix secondMatrix = new Matrix(Matrix.COEFFICIENTS_MATRIX, rows2, columns2);
@@ -150,10 +150,16 @@ public class BoardController {
 				}
 	    	
     	}else {
-    		tabOneLabel.setText("the quantity of the columns of the first matrix must be equal "+"\n"+"the quantity of the rows of the second matrix");
+    		tabOneLabel.setText("The amount of columns in the first matrix must be equal "+"\n"+" to the amount of rows in the second matrix");
     	}
 	}
 
+	public boolean validateSizes(int a, int b){
+    	boolean success = false;
+    	if(a == b)
+    		success = true;
+    	return success;
+	}
 //________________________________________________________________________________________________________________
 
     @FXML
