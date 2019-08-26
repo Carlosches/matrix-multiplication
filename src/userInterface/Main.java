@@ -42,6 +42,9 @@ public class Main extends Application {
 		
 		Parent root = FXMLLoader.load(getClass().getResource("battleBoard.fxml"));
 		Scene scene = new Scene(root);
+		String c = Main.class.getResource("style.css").toExternalForm();
+		scene.getStylesheets().add(c);
+		
 		stage.setTitle("Battle Board");
 		stage.setScene(scene);
 		stage.show();

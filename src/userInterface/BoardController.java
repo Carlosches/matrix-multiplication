@@ -6,7 +6,6 @@
 
 package userInterface;
 
-import java.net.URL;
 
 //______________________________________________________IMPORTS___________________________________________________________
 
@@ -20,8 +19,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import model.*;
@@ -135,7 +132,7 @@ public class BoardController {
     		board.getMatrices().add(secondMatrix);
     		
     		List<String> shipsOne = firstMatrix.findShips(board.getPrimes());
-    		List<String> shipsTwo = firstMatrix.findShips(board.getPrimes());
+    		List<String> shipsTwo = secondMatrix.findShips(board.getPrimes());
     		
 	    	GridPane gridPaneOne = new GridPane();
 	    	gridPaneOne.setPadding(new Insets(20));
@@ -168,7 +165,7 @@ public class BoardController {
 						gridPaneTwo.add(button, j,i );
 					}
 				}
-	    	
+		    	tabOneLabel.setText("the blue numbers represent the ships".toUpperCase());
     	}else {
     		tabOneLabel.setText("The amount of columns in the first matrix must be equal "+"\n"+" to the amount of rows in the second matrix");
     	}
@@ -203,26 +200,28 @@ public class BoardController {
     @FXML
     void tabOneMultiplyButton(ActionEvent event) {
     	
-    	
-    	matrix = board.multiplyMatricesFirstOption();
-    	
-    	GridPane gridPane = new GridPane();
-    	gridPane.getChildren().clear();
-    	gridPane.setPadding(new Insets(20));
-    	scrollPaneThree.setContent(gridPane);
-    	
-    	for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				int cur = +matrix[i][j];
-				Button button = new Button(""+cur);
-				if(board.getPrimes()[cur]==0)
-					button.setTextFill(Color.BLUE);
-				button.setPadding(new Insets(20));
-				gridPane.add(button, j,i );
+    	if(!board.getMatrices().isEmpty()) {
+	    	matrix = board.multiplyMatricesFirstOption();
+	    	
+	    	GridPane gridPane = new GridPane();
+	    	gridPane.getChildren().clear();
+	    	gridPane.setPadding(new Insets(20));
+	    	scrollPaneThree.setContent(gridPane);
+	    	
+	    	for (int i = 0; i < matrix.length; i++) {
+				for (int j = 0; j < matrix[i].length; j++) {
+					int cur = +matrix[i][j];
+					Button button = new Button(""+cur);
+					if(board.getPrimes()[cur]==0)
+						button.setTextFill(Color.BLUE);
+					button.setPadding(new Insets(20));
+					gridPane.add(button, j,i );
+				}
 			}
-		}
-    	
-    	
+	    	tabOneLabel.setText("YOU CAN SEE THE RESULT IN RESULT TAB");
+    	}else {
+    		tabOneLabel.setText("ENTER THE MATRICES PLEASE");
+    	}
     }
 
 //________________________________________________________________________________________________________________
@@ -269,7 +268,7 @@ public class BoardController {
 	    	
 	    		gridPane.add(gridPane2, k,0);
 	    	}
-    	
+	    	tabTwoLabel.setText("the blue numbers represent the ships".toUpperCase());
     	}catch(NumberFormatException e) {
     		
     		tabTwoLabel.setText("PLEASE, INTRODUCE ONLY POSITIVE INTEGER VALUES");
@@ -282,44 +281,29 @@ public class BoardController {
     @FXML
     void tabTwoMultiplyButton(ActionEvent event) {
     	
-    	matrix = board.multiplyMatricesFirstOption();
-    	
-    	GridPane gridPane = new GridPane();
-    	gridPane.getChildren().clear();
-    	gridPane.setPadding(new Insets(20));
-    	scrollPaneThree.setContent(gridPane);
-    	
-    	for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				int cur = matrix[i][j];
-				Button button = new Button(""+cur);
-				if(cur<10000000 && board.getPrimes()[cur]==0)
-					button.setTextFill(Color.BLUE);
-				button.setPadding(new Insets(20));
-				gridPane.add(button, j,i );
+    	if(board.getMatrices().isEmpty()) {
+	    	matrix = board.multiplyMatricesFirstOption();
+	    	
+	    	GridPane gridPane = new GridPane();
+	    	gridPane.getChildren().clear();
+	    	gridPane.setPadding(new Insets(20));
+	    	scrollPaneThree.setContent(gridPane);
+	    	
+	    	for (int i = 0; i < matrix.length; i++) {
+				for (int j = 0; j < matrix[i].length; j++) {
+					int cur = matrix[i][j];
+					Button button = new Button(""+cur);
+					if(cur<10000000 && board.getPrimes()[cur]==0)
+						button.setTextFill(Color.BLUE);
+					button.setPadding(new Insets(20));
+					gridPane.add(button, j,i );
+				}
 			}
-		}
+	    	tabTwoLabel.setText("ENTER THE MATRICES PLEASE");
+    	}else {
+    		tabTwoLabel.setText("YOU CAN SEE THE RESULT IN RESULT TAB");
+    	}
     	
-    	/*
-    	try {
-			
-			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("outcome.fxml"));
-			Parent root1= (Parent)fxmlLoader.load();
-			
-			Stage stage= new Stage();
-			
-			stage.setTitle("OUTCOME MATRIX");
-			
-			stage.setScene(new Scene(root1));
-			
-			stage.show();
-			
-		} catch (IOException e) {
-			
-			System.out.println("ERROR");
-			e.printStackTrace();
-			
-		}*/
     	
     }
     
