@@ -6,22 +6,24 @@
 
 package userInterface;
 
+import java.net.URL;
+
 //______________________________________________________IMPORTS___________________________________________________________
 
-import java.io.IOException;
+import java.util.List;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 import model.*;
 
 //______________________________________________________THE CLASS__________________________________________________________
@@ -132,6 +134,9 @@ public class BoardController {
     		board.getMatrices().add(firstMatrix);
     		board.getMatrices().add(secondMatrix);
     		
+    		List<String> shipsOne = firstMatrix.findShips(board.getPrimes());
+    		List<String> shipsTwo = firstMatrix.findShips(board.getPrimes());
+    		
 	    	GridPane gridPaneOne = new GridPane();
 	    	gridPaneOne.setPadding(new Insets(20));
 	    	scrollPaneOneA.setContent(gridPaneOne);
@@ -141,7 +146,11 @@ public class BoardController {
 	    	
 		    	for (int i = 0; i < rows1; i++) {
 					for (int j = 0; j < columns1; j++) {
-						Button button = new Button(""+firstMatrix.getMatrix()[i][j]);
+						Button  button = new Button(""+firstMatrix.getMatrix()[i][j]);
+						if(shipsOne.contains(i+","+j)) {
+							 button.setTextFill(Color.BLUE);
+							 
+						}
 						button.setPadding(new Insets(20));
 						gridPaneOne.add(button, j, i);
 					}
@@ -151,6 +160,10 @@ public class BoardController {
 		    	for (int i = 0; i < rows2; i++) {
 					for (int j = 0; j < columns2; j++) {
 						Button button = new Button(""+secondMatrix.getMatrix()[i][j]);
+						if(shipsTwo.contains(i+","+j)) {
+							 button.setTextFill(Color.BLUE);
+							 
+						}
 						button.setPadding(new Insets(20));
 						gridPaneTwo.add(button, j,i );
 					}
@@ -161,7 +174,13 @@ public class BoardController {
     	}
 	}
 
-
+    
+   /* public void addImageButton(Button button) {
+    	
+    	ImageView image = new ImageView(new Image("/image/ship.png"));
+    	
+    	button.setGraphic(image);
+    }*/
 //________________________________________________________________________________________________________________
 
 
@@ -194,32 +213,15 @@ public class BoardController {
     	
     	for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				Button button = new Button(""+matrix[i][j]);
+				int cur = +matrix[i][j];
+				Button button = new Button(""+cur);
+				if(board.getPrimes()[cur]==0)
+					button.setTextFill(Color.BLUE);
 				button.setPadding(new Insets(20));
 				gridPane.add(button, j,i );
 			}
 		}
     	
-    	/*
-		try {
-			
-			FXMLLoader fxmlLoader= new FXMLLoader(getClass().getResource("outcome.fxml"));
-			Parent root1= (Parent)fxmlLoader.load();
-			
-			Stage stage= new Stage();
-			
-			stage.setTitle("OUTCOME MATRIX");
-			
-			stage.setScene(new Scene(root1));
-			
-			stage.show();
-			
-		} catch (IOException e) {
-			
-			System.out.println("ERROR");
-			e.printStackTrace();
-			
-		}*/
     	
     }
 
@@ -247,13 +249,21 @@ public class BoardController {
 	    	board.generateMatrices(num);
 	    	
 	    	for (int k = 0; k < board.getMatrices().size(); k++) {
-				int[][] currentMatrix = board.getMatrices().get(k).getMatrix();
+				Matrix act = board.getMatrices().get(k);
+				List<String> positions = act.findShips(board.getPrimes());
+				 int[][] currentMatrix = act.getMatrix();
 	    		GridPane gridPane2 = new GridPane();
 	    		gridPane2.setPadding(new Insets(20));
 	    		
 	    		for (int i = 0; i < currentMatrix.length; i++) {
 	    			for (int j = 0; j < currentMatrix[i].length; j++) {
-	    				gridPane2.add(new Button(""+currentMatrix[i][j]), j,i);
+	    				Button button = new Button(""+currentMatrix[i][j]);
+	    				if(positions.contains(""+i+","+j)) {
+	    					button.setTextFill(Color.BLUE);
+	    				}
+	    				gridPane2.add(button, j,i);
+	    			
+	    					
 	    			}
 	    		}
 	    	
@@ -281,7 +291,10 @@ public class BoardController {
     	
     	for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				Button button = new Button(""+matrix[i][j]);
+				int cur = matrix[i][j];
+				Button button = new Button(""+cur);
+				if(cur<10000000 && board.getPrimes()[cur]==0)
+					button.setTextFill(Color.BLUE);
 				button.setPadding(new Insets(20));
 				gridPane.add(button, j,i );
 			}

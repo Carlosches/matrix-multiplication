@@ -6,6 +6,8 @@
 
 package model;
 
+import java.util.ArrayList;
+
 //______________________________________________________IMPORTS___________________________________________________________
 
 import java.util.List;
@@ -25,6 +27,8 @@ public class Matrix {
 	public static final String COEFFICIENTS_MATRIX = "coefficients";
 	public static final String CURRENT_BATTLE_MATRIX = "current";
 	public static final String OTHER = "other";
+	
+	public static final String SHIP_IMAGE = "/image/ship";
 	
 //______________________________________________________ATTRIBUTES___________________________________________________________
 
@@ -59,11 +63,14 @@ public class Matrix {
 	 * <b>post:</b> the parameter matrix has been modified.
 	 */
 	private void fillMatrix() {
-		
+		int max =100;
+		if(type.equals(COEFFICIENTS_MATRIX))
+			max = 5;
 		for (int i = 0; i < rows; i++) {
 			
 			for (int j = 0; j < columns; j++) {
-				int num = (int) (Math.random()*150)+1;
+				
+				int num = (int) (Math.random()*max)+1;
 				matrix[i][j] = num;
 			}
 		}
@@ -72,8 +79,19 @@ public class Matrix {
 
 //________________________________________________________________________________________________________________
 	
-	public List<String> findShips(){
-		return null;
+	public List<String> findShips(int[] primes){
+		List<String> positions = new ArrayList<>();
+		for (int i = 0; i < matrix.length; i++) {
+			
+			for (int j = 0; j < matrix[i].length; j++) {
+				int current = matrix[i][j];
+				if(primes[current]==0) {
+					positions.add(""+i+","+j);
+				}
+			}
+		}
+		
+		return positions;
 	}
 
 //________________________________________________________________________________________________________________

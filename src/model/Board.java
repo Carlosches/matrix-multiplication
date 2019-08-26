@@ -23,7 +23,7 @@ public class Board {
 
 //______________________________________________________CONSTANTS___________________________________________________________	
 	
-	public static final String SHIP_IMAGE = "";
+	
 	
 //______________________________________________________ATTRIBUTES___________________________________________________________
 
@@ -39,7 +39,8 @@ public class Board {
 	
 	public Board() {
 		matrices = new ArrayList<>();
-		
+		primeNumbers = new int[10000001];
+		generatePrimes();
 	}
 	
 //________________________________________________________________________________________________________________
@@ -393,7 +394,7 @@ public class Board {
 	
 	/**
 	 * <b>Description:</b>
-	 * This function uses the classic sieve of Eratosthenes to generate all prime numbers up to 1000000.
+	 * This function uses the classic sieve of Eratosthenes to generate all prime numbers up to 10000000.
 	 * <b>post:</b>  The array of prime numbers has been initialized.
 	 */
 	
@@ -406,7 +407,7 @@ public class Board {
 			if(primeNumbers[i] == 0){
 			
 				int mul = 2;
-				while(mul * i < 1000001)
+				while(mul * i < 10000001)
 					primeNumbers[mul++ * i] = 1;
 			}
 		}		
