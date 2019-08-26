@@ -10,6 +10,8 @@ package userInterface;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.GridPane;
+import model.Board;
 
 //______________________________________________________THE CLASS__________________________________________________________
 
@@ -27,15 +29,27 @@ public class OutcomeController {
     @FXML
     private ScrollPane outcomeScrollPane;
     
+    private Board board;
+    
 //______________________________________________________METHODS___________________________________________________________
-
-    public void init() {
+    
+    @FXML
+    public void initialize() {
     	
+    	board = new Board();
     	
     	
     }
 
 //________________________________________________________________________________________________________________
+    
+    public void generateMatrix() {
+    	
+    	GridPane gridPane = new GridPane();
+    	
+    }
+    
+ //________________________________________________________________________________________________________________
     
 }
 

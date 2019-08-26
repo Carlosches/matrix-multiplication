@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 //______________________________________________________IMPORTS___________________________________________________________
 
-import java.util.Arrays;
 import java.util.List;
 
 //______________________________________________________THE CLASS__________________________________________________________
@@ -48,8 +47,8 @@ public class Board {
 	/**
 	 * <b>Description:</b>
 	 * This method multiply matrices by using the iterative algorithm.<br><br>
-	 * <b>Pre: </b>
-	 * <b>Post: </b>
+	 * <b>Pre:</b> The ArrayList of matrices must not be empty.
+	 * @return The matrix obtained of multiplying the matrices in the ArrayList of matrices. 
 	 */
 	
 	public int[][] multiplyMatricesFirstOption() {
@@ -78,8 +77,9 @@ public class Board {
 	/**
 	 * <b>Description:</b>
 	 * This method multiply matrices by using the divide and conquer algorithm.<br><br>
-	 * <b>Pre: </b>
-	 * <b>Post: </b>
+	 * <b>Pre: </b> The ArrayList of matrices must not be empty.
+	 * <b>Pre: </b> The matrices of the ArrayList must be square matrices.
+	 * @return The matrix obtained of multiplying the matrices in the ArrayList of matrices.
 	 */
 	
 	public int[][] multiplyMatricesSecondOption(){
@@ -140,13 +140,6 @@ public class Board {
 
 		return 1 << count;
 	}
-
-	/**
-	 * <b>Description:</b>
-	 * This method multiply matrices by using the divide and conquer algorithm.<br><br>
-	 * <b>Pre: </b>
-	 * <b>Post: </b>
-	 */
 
 	private int[][] multiplyMatricesSecondOptionAux(int[][] A, int[][] B, int n) {
 		int[][] C = new int[n][n];
@@ -236,8 +229,9 @@ public class Board {
 	/**
 	 * <b>Description:</b>
 	 * This method multiply matrices by using the Strassen algorithm.<br><br>
-	 * <b>Pre: </b>
-	 * <b>Post: </b>
+	 * <b>Pre: </b> The ArrayList of matrices must not be empty.
+	 * <b>Pre: </b> The matrices of the ArrayList must be square matrices.
+	 * @return The matrix obtained of multiplying the matrices in the ArrayList of matrices
 	 */
 
 	public int[][] multiplyMatricesThirdOption(){
@@ -392,8 +386,9 @@ public class Board {
 	
 	/**
 	 * <b>Description:</b>
-	 * 
-	 * @return
+	 * This method returns an array that contains n prime numbers.
+	 * <b>Pre: </b> The board must not be null.
+	 * @return An array of prime numbers.
 	 */
 	
 	public int[] getPrimes() {
@@ -404,8 +399,9 @@ public class Board {
 
 	/**
 	 * <b>Description:</b>
-	 * 
-	 * @return the matrices
+	 * This method returns a list with the matrices that will be multiplied.
+	 * <b>Pre: </b> The board must not be null.
+	 * @return A list with the matrices.
 	 */
 	public List<Matrix> getMatrices() {
 		return matrices;
@@ -413,16 +409,5 @@ public class Board {
 	
 //________________________________________________________________________________________________________________
 
-	/**
-	 * <b>Description:</b>
-	 * 
-	 * @param matrices the matrices to set
-	 */
-	public void setMatrices(List<Matrix> matrices) {
-		this.matrices = matrices;
-	}
-	
-	
-//________________________________________________________________________________________________________________
 	
 }
